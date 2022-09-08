@@ -1,6 +1,6 @@
 CREATE TABLE principal(
     id BIGINT,
-    emails TEXT,
+    email TEXT,
     created_ts BIGINT NOT NULL DEFAULT (extract(epoch from now()))
 );
 
