@@ -27,19 +27,19 @@ var (
 	generateRollbackSQLChan = make(chan *api.Task, 100)
 )
 
-// NewRollbackRunner creates a new backup runner.
+// NewRollbackRunner creates a new rollback runner.
 func NewRollbackRunner(server *Server) *RollbackRunner {
 	return &RollbackRunner{
 		server: server,
 	}
 }
 
-// RollbackRunner is the backup runner scheduling automatic backups.
+// RollbackRunner is the rollback runner generating rollback SQL statements.
 type RollbackRunner struct {
 	server *Server
 }
 
-// Run is the runner for backup runner.
+// Run starts the rollback runner.
 func (r *RollbackRunner) Run(ctx context.Context, wg *sync.WaitGroup) {
 	defer wg.Done()
 	r.retryGetRollbackSQL(ctx)
